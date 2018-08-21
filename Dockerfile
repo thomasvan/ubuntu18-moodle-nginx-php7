@@ -60,10 +60,8 @@ RUN openssl req \
     -keyout /etc/ssl/private/ssl-cert-snakeoil.key \
     -out /etc/ssl/certs/ssl-cert-snakeoil.pem
 
-# Install composer and modman
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    curl -sSL https://raw.github.com/colinmollenhour/modman/master/modman > /usr/sbin/modman && \
-    chmod +x /usr/sbin/modman
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Supervisor Config
 RUN apt-get install -y supervisor

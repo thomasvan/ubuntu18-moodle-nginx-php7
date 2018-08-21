@@ -1,25 +1,19 @@
-### Run the latest moodle 2 on Ubuntu 18.04.1 LTS, including: 
+### Run the latest Moodle on Ubuntu 18.04.1 LTS, including: 
 - Shell In A Box – A Web-Based SSH Terminal - version 2.x
 - nginx version: nginx/1.x
 - php-fpm 7.0.x
-- elasticsearch 5.6.4 and 2.4.6
-- redis server version 4.x
 - mysql version 5.7.x
 - phpMyAdmin latest version
 - composer latest version
-- Module Manager latest version
 - You can also handle all services using supervisord 3. <container_ip>:9011 or commandline: 
 
 ```bash
 moodle@c9786d14b245:~/files/html$ sudo supervisorctl 
 BroswerBased-SSH                 RUNNING   pid 18, uptime 1:30:39
 Cron                             RUNNING   pid 20, uptime 1:30:39
-ElasticSearch_2.x_9200           STOPPED   Not started
-ElasticSearch_5.x_9202           STOPPED   Not started
 MySQL                            RUNNING   pid 14, uptime 1:30:39
 NGINX                            RUNNING   pid 15, uptime 1:30:39
 PHP-FPM                          RUNNING   pid 13, uptime 1:30:39
-RedisServer                      STOPPED   Not started
 System-Log                       RUNNING   pid 19, uptime 1:30:39
 ```
 ___
@@ -27,21 +21,18 @@ ___
 ### Usage
 Services and ports exposed
 - Shell In A Box – A Web-Based SSH Terminal - http://<container_ip>:4200
-- ElasticSearch 5.6.4 - <container_ip>:9002
-- ElasticSearch 2.4.6 - <container_ip>:9000
 - MySQL - <container_ip>:3306
 - phpMyAdmin - http://<container_ip>/phpmyadmin
 - Nginx and php-fpm 7.0.x - http://<container_ip> and https://<container_ip> for web browsing
-- Redis - <container_ip>:6379
 
 #### Sample container initialization: 
 
 ```bash
-$ docker run -v <your-webapp-root-directory>:/home/moodle/files -p 4222:4200 -p 9022:9011 --name docker-name -d thomasvan/ubuntu18-moodle2-nginx-php7-elasticsearch-mysql-phpmyadmin-redis-composer-modman:latest
+$ docker run -v <your-webapp-root-directory>:/home/moodle/files -p 4222:4200 -p 9022:9011 --name docker-name -d thomasvan/ubuntu18-moodle-nginx-php7-mysql-phpmyadmin-composer:latest
 ```
 ___
 
-After starting the container ubuntu18-moodle2-nginx-php7-elasticsearch-mysql-phpmyadmin-redis-composer-modman, please check to see if it has started and the port mapping is correct. This will also report the port mapping between the docker container and the host machine.
+After starting the container ubuntu18-moodle-nginx-php7-mysql-phpmyadmin-composer, please check to see if it has started and the port mapping is correct. This will also report the port mapping between the docker container and the host machine.
 
 ##### Accessing containers by port mapping
 ```bash
@@ -91,8 +82,8 @@ Password:
 Welcome to Ubuntu 18.04.1 LTS ...
 
 moodle@c9786d14b245:~$ cd files/html/
-moodle@c9786d14b245:~/files/html$ echo "install moodle 2 here..."
-install moodle 2 here...
+moodle@c9786d14b245:~/files/html$ echo "install moodle here..."
+install moodle here...
 moodle@c9786d14b245:~/files/html$ echo "all set, you can browse your website now"
 all set, you can browse your website now
 moodle@c9786d14b245:~/files/html$ 
@@ -100,6 +91,6 @@ moodle@c9786d14b245:~/files/html$
 ___
 
 
-_If anyone has suggestions please leave a comment on [this GitHub issue](https://github.com/thomasvan/ubuntu18-moodle2-nginx-php7/issues/2)._
+_If anyone has suggestions please leave a comment on [this GitHub issue](https://github.com/thomasvan/ubuntu18-moodle-nginx-php7/issues/2)._
 
-_Requests? Just make a comment on [this GitHub issue](https://github.com/thomasvan/ubuntu18-moodle2-nginx-php7/issues/1) if there's anything you'd like added or changed._
+_Requests? Just make a comment on [this GitHub issue](https://github.com/thomasvan/ubuntu18-moodle-nginx-php7/issues/1) if there's anything you'd like added or changed._
